@@ -1,0 +1,48 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-4 text-center">
+            <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
+
+            <br>
+            <form [formGroup]="regisForm" autocomplete="disabled">
+              <div class="form-group">
+                <input formControlName="email" placeholder="Correo" type="email" class="form-control form-style"
+                  [ngClass]="{'is-invalid': isNotValidField('email'), 'is-valid': !isNotValidField('email') && this.f['email'].touched}"
+                  id="validationSuccess" required autocomplete="disabled">
+                <div class="invalid-feedback" style="font-size: small;">
+                  {{getErrorMessage('email')}}
+                </div>
+              </div>
+              <div class="form-group">
+                <input formControlName="username" placeholder="Usuario" type="text" class="form-control form-style"
+                  [ngClass]="{'is-invalid': isNotValidField('username'), 'is-valid': !isNotValidField('username') && this.f['username'].touched}"
+                  id="validationSuccess" required autocomplete="disabled">
+                <div class="invalid-feedback" style="font-size: small;">
+                  {{getErrorMessage('username')}}
+                </div>
+              </div>
+              <div class="form-group">
+                <input formControlName="password" type="password" name="logpass" class="form-control form-style"
+                  placeholder="Contraseña"
+                  [ngClass]="{'is-invalid': isNotValidField('password'), 'is-valid': !isNotValidField('password') && this.f['password'].touched}"
+                  id="logpass" autocomplete="disabled">
+                <div class="invalid-feedback" style="font-size: small;">
+                  {{getErrorMessage('password')}}
+                </div>
+              </div>
+              <div *ngIf="error" class="is-invalid mt-4"></div>
+              <div class="invalid-feedback" style="font-size: medium;">
+                {{(errorMsj | async)}}
+              </div>
+              <button [disabled]="regisForm.invalid" (click)="onRegister()"
+                class="btn btn-outline-light btn-md px-5 mb-3 mt-4">Registrar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

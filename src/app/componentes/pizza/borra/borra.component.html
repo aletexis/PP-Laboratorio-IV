@@ -1,0 +1,14 @@
+<div class="card mb-4 mt-3 rounded-3 shadow-sm">
+    <div class="card-header py-3 text-white bg-danger border-danger">
+      <h4 class="my-0 fw-normal">Eliminar</h4>
+    </div>
+    <div class="card-body">
+      <h1 class="card-title pricing-card-title">{{pizza.name}}</h1>
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>Ingredientes: {{pizza.ingredientes}}</li>
+        <li>Precio: {{pizza.price}}</li>
+        <li>Peso: {{pizza.weight}}</li>
+      </ul>
+      <button type="button" class="w-100 btn btn-lg btn-danger" (click)="borrarPizza()">Eliminar</button>
+    </div>
+  </div>

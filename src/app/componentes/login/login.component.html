@@ -1,0 +1,50 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-4 text-center">
+
+            <h2 class="fw-bold mb-2 text-uppercase">Iniciar Sesión</h2>
+
+            <br>
+            <form [formGroup]="loginForm" autocomplete="disabled">
+
+              <div class="form-group">
+                <input formControlName="username" placeholder="Correo" type="email"
+                  class="form-control form-style form-control-lg"
+                  [ngClass]="{'is-invalid': isNotValidField('username'), 'is-valid': !isNotValidField('username') && this.f['username'].touched}"
+                  id="validationSuccess" required autocomplete="disabled">
+                <div class="invalid-feedback" style="font-size: small;">
+                  {{getErrorMessage('username')}}
+                </div>
+              </div>
+              <div class="form-group mt-2">
+                <input formControlName="password" type="password" name="logpass"
+                  class="form-control form-style form-control-lg" placeholder="Contraseña"
+                  [ngClass]="{'is-invalid': isNotValidField('password'), 'is-valid': !isNotValidField('password') && this.f['password'].touched}"
+                  id="logpass" autocomplete="disabled">
+                <div class="invalid-feedback" style="font-size: small;">
+                  {{getErrorMessage('password')}}
+                </div>
+              </div>
+              <div *ngIf="error" class="is-invalid mt-4"></div>
+              <div class="invalid-feedback" style="font-size: medium;">
+                {{(errorMsj | async)}}
+              </div>
+              <button [disabled]="loginForm.invalid" (click)="onLogin()"
+                class="btn btn-outline-light btn-md px-5 mb-3 mt-4">Ingresar</button>
+              <br>
+              <button class="mb-0 mt-4 text-center btn btn-outline-primary" (click)="completarLogin('employee')">
+                Ingresar como empleado
+              </button>
+              <button class="mb-0 mt-4 text-center btn btn-outline-danger" (click)="completarLogin('admin')">
+                Ingresar como administrador
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

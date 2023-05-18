@@ -1,0 +1,30 @@
+<p-toast position="bottom-center"></p-toast>
+<div class="container">
+    <form [formGroup]="activarTerminosForm">
+        <div class="row">
+            <div class="col-12 mt-3">
+                <p class="font-weight-bolder text-center">TÉRMINOS Y CONDICIONES.</p>
+            </div>
+            <div class="col-12 mt-2">
+                <div class="input-group">
+                    <textarea class="form-control" aria-label="With textarea" style="height: 30vh;">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, repellat eveniet est natus, dignissimos nulla rem delectus fuga voluptate veritatis veniam ut sed distinctio eos ullam. Illum, accusamus? Mollitia, perferendis!
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia officiis quo harum veniam, quis veritatis perferendis dolore minus corrupti sequi maiores asperiores consequuntur assumenda cupiditate libero. Tenetur nulla quisquam nihil?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, libero voluptatum? Quasi libero, obcaecati eos ad consequatur reprehenderit, doloremque perspiciatis inventore excepturi, fugiat eaque cupiditate. Placeat eveniet sequi ex aliquid.
+                    </textarea>
+                </div>
+            </div>
+            <div class="col-12 mt-2">
+                <div class="form-group">
+                    <input formControlName="email" placeholder="Your email" type="text" class="form-control form-style" [ngClass]="{'is-invalid': isNotValidField('email'), 'is-valid': !isNotValidField('email') && this.f['email'].touched}" id="validationSuccess" required autocomplete="disabled">
+                    <div class="invalid-feedback" style="font-size: small;">
+                      {{getErrorMessage('email')}}
+                   </div>
+                </div>
+            </div>
+            <div class="col-12 mt-2">
+                <button [disabled]="activarTerminosForm.invalid" type="button" class="btn btn-success" style="width: 100%;" (click)="aceptarTerminos()">Success</button>
+            </div>
+        </div>
+    </form>
+</div>

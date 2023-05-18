@@ -1,0 +1,85 @@
+<body class="bg-dark">
+  <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-md-4 order-md-2 bg-light borde-redondo my-margin">
+        <app-listado-paises (paisSeleccionado)="paisSelec($event)"></app-listado-paises>
+      </div>
+
+      <div class="col-md-7 order-md-1 bg-light borde-redondo">
+        <div class="loading" *ngIf="cargando">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!cargando">
+          <h4 class="mt-3 mb-3">Repartidor</h4>
+          <form [formGroup]="altaRepartidorForm" class="needs-validation">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label for="firstName">DNI</label>
+                <input type="text" formControlName="dni" class="form-control form-style" id="dni" placeholder="DNI"
+                  [ngClass]="{'is-invalid': isNotValidField('dni'), 'is-valid': !isNotValidField('dni') && this.f['dni'].touched}"
+                  required>
+                <div class="invalid-feedback">
+                  {{getErrorMessage('dni')}}
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Nombre</label>
+                <input type="text" formControlName="nombre" class="form-control form-style" id="firstName"
+                  placeholder="Nombre"
+                  [ngClass]="{'is-invalid': isNotValidField('nombre'), 'is-valid': !isNotValidField('nombre') && this.f['nombre'].touched}"
+                  required>
+                <div class="invalid-feedback">
+                  {{getErrorMessage('nombre')}}
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Edad</label>
+                <input min="18" type="number" formControlName="edad" class="form-control form-style" id="edad"
+                  placeholder="Edad"
+                  [ngClass]="{'is-invalid': isNotValidField('edad'), 'is-valid': !isNotValidField('edad') && this.f['edad'].touched}"
+                  required>
+                <div class="invalid-feedback">
+                  {{getErrorMessage('edad')}}
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Capacidad de transporte</label>
+              </div>
+              <input type="number" formControlName="capsTrans" class="form-control form-style" id="cap"
+                [ngClass]="{'is-invalid': isNotValidField('capsTrans'), 'is-valid': !isNotValidField('capsTrans') && this.f['capsTrans'].touched}"
+                min="1">
+              <div class="invalid-feedback">
+                {{getErrorMessage('capsTrans')}}
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Unidad propia</label>
+              </div>
+              <select class="custom-select form-control form-style" id="inputGroupSelect01"
+                formControlName="unidadPropia">
+                <option [value]="true">Si</option>
+                <option [value]="false">No</option>
+              </select>
+            </div>
+
+            <div class="mb-3" *ngIf="paisSeleccionado">
+              <label for="nombrePais" class="col-form-label">Pais</label>
+              <div>
+                <input disabled class="form-control" type="text" id="nombrePais" [value]="paisSeleccionado.name">
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button [disabled]="altaRepartidorForm.invalid || !paisSeleccionado"
+              class="btn btn-primary btn-lg btn-block mb-5" type="submit" (click)="cargarRepartidor()">Cargar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

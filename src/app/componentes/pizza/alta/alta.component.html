@@ -1,0 +1,38 @@
+<div class="card mb-4 mt-3 rounded-3 shadow-sm">
+    <div class="card-header py-3 text-white bg-primary border-primary">
+      <h4 class="my-0 fw-normal">Cargar</h4>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="altaPizzaForm">
+            <div class="mb-3">
+                <input type="text" formControlName="nombre" class="form-control form-style" placeholder="Nombre" [ngClass]="{'is-invalid': isNotValidField('nombre'), 'is-valid': !isNotValidField('nombre') && this.f['nombre'].touched}" required>
+                <div class="invalid-feedback">
+                    {{getErrorMessage('nombre')}}
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <span class="input-group-text">Ingredientes</span>
+                    <textarea class="form-control form-style" formControlName="ingredientes" [ngClass]="{'is-invalid': isNotValidField('ingredientes'), 'is-valid': !isNotValidField('ingredientes') && this.f['ingredientes'].touched}" required></textarea>
+                    <div class="invalid-feedback">
+                    {{getErrorMessage('ingredientes')}}
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control form-style" formControlName="price"  [ngClass]="{'is-invalid': isNotValidField('price'), 'is-valid': !isNotValidField('price') && this.f['price'].touched}" required>
+                <div class="invalid-feedback">
+                    {{getErrorMessage('price')}}
+                    </div>
+            </div>
+            <div class="mb-3">
+                <input type="text" formControlName="weight" class="form-control form-style" placeholder="Peso" [ngClass]="{'is-invalid': isNotValidField('weight'), 'is-valid': !isNotValidField('weight') && this.f['weight'].touched}" required>
+                <div class="invalid-feedback">
+                    {{getErrorMessage('weight')}}
+                </div>
+            </div>
+        </form>
+      <button type="submit" [disabled]="altaPizzaForm.invalid" class="w-100 btn btn-lg btn-primary" (click)="emitNewPizza()">Cargar</button>
+    </div>
+  </div>

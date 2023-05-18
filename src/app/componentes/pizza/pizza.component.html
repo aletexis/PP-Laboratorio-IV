@@ -1,0 +1,23 @@
+<main class="bg-dark">
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+    <div class="col">
+      <app-alta (nuevaPizza)="crearPizza($event)"></app-alta>
+    </div>
+    <div class="col">
+      <app-modifica *ngIf="pizzaSelecc" [pizza]="pizzaSelecc" (pizzaModificada)="modificarPizza($event)"></app-modifica>
+    </div>
+    <div class="col">
+      <app-borra *ngIf="pizzaSelecc" [pizza]="pizzaSelecc" (pizzaBorrada)="borrarPizza($event)"></app-borra>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="bg-light col-md-6 mb-5 justify-content-center borde-redondo">
+      <app-lista *ngIf="listaPizzas" [listaPizzas]="listaPizzas" (pizzaSeleccionada)="pizzaSeleccionada($event)">
+      </app-lista>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</main>

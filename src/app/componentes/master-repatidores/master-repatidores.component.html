@@ -1,0 +1,23 @@
+<body class="bg-dark">
+  <div class="container">
+    <div class="bg-light rounded-4 borde-redondo">
+      <div class="container-fluid py-1 rounded-3">
+        <app-listado-repartidores *ngIf="listaRepartidores" [listaRepartidores]="listaRepartidores"
+          (repartidorSelecc)="repSelec($event)"></app-listado-repartidores>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch" *ngIf="repartidorSelec">
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-dark rounded-3">
+          <app-detalle-repartidores [repartidorSeleccionado]="repartidorSelec"></app-detalle-repartidores>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-dark rounded-3">
+          <app-detalle-pais [pais]="repartidorSelec.nacionalidad"></app-detalle-pais>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
